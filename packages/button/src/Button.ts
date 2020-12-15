@@ -40,9 +40,6 @@ export class Button extends SizedMixin(ButtonBase) {
     @property({ reflect: true })
     public variant: ButtonVariants = 'cta';
 
-    @property({ type: String, reflect: true })
-    public size = 'm';
-
     /**
      * There is a warning in place for this control
      */

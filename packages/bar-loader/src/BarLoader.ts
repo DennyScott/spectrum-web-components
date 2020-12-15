@@ -43,9 +43,6 @@ export class BarLoader extends SizedMixin(SpectrumElement) {
     @property({ type: Boolean, reflect: true, attribute: 'side-label' })
     public sideLabel = false;
 
-    @property({ type: String, reflect: true })
-    public size = 'm';
-
     @property({ type: Number })
     public progress = 0;
 

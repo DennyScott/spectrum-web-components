@@ -24,7 +24,8 @@ export interface SizedElementInterface {
 }
 
 export function SizedMixin<T extends Constructor<UpdatingElement>>(
-    constructor: T
+    constructor: T,
+    validSizes: Partial<ElementSize>[] = ['s', 'm', 'l', 'xl']
 ): T & Constructor<SizedElementInterface> {
     class SizedElement extends constructor {
         @property({ type: String, reflect: true })
@@ -33,8 +34,8 @@ export function SizedMixin<T extends Constructor<UpdatingElement>>(
         }
 
         public set size(value: ElementSize) {
-            const size = value.toLocaleLowerCase();
-            const validSize = (['s', 'm', 'l', 'xl'].includes(size)
+            const size = value.toLocaleLowerCase() as ElementSize;
+            const validSize = (validSizes.includes(size)
                 ? size
                 : 'm') as ElementSize;
             if (this._size === validSize) return;

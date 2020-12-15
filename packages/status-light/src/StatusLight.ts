@@ -36,9 +36,6 @@ export class StatusLight extends SizedMixin(SpectrumElement) {
     @property({ type: Boolean, reflect: true })
     public disabled = false;
 
-    @property({ type: String, reflect: true })
-    public size = 'm';
-
     /**
      * The visual variant to apply to this status light.
      */

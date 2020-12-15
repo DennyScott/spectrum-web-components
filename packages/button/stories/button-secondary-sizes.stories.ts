@@ -9,31 +9,21 @@ the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTA
 OF ANY KIND, either express or implied. See the License for the specific language
 governing permissions and limitations under the License.
 */
+import { TemplateResult } from '@spectrum-web-components/base';
+import { renderButtonSet } from './index.js';
 
-import {
-    html,
-    SpectrumElement,
-    CSSResultArray,
-    TemplateResult,
-    property,
-    SizedMixin,
-} from '@spectrum-web-components/base';
+export default {
+    component: 'sp-button',
+    title: 'Button/Secondary/Sizes',
+};
 
-import styles from './rule.css.js';
+const variant = 'secondary';
 
-/**
- * @element sp-rule
- */
-export class Rule extends SizedMixin(SpectrumElement, ['s', 'm', 'l']) {
-    public static styles: CSSResultArray = [styles];
+export const s = (): TemplateResult => renderButtonSet({ size: 's', variant });
 
-    @property({ type: Boolean, reflect: true })
-    public vertical = false;
+export const m = (): TemplateResult => renderButtonSet({ size: 'm', variant });
 
-    protected render(): TemplateResult {
-        if (this.vertical) return html``;
-        return html`
-            <hr />
-        `;
-    }
-}
+export const l = (): TemplateResult => renderButtonSet({ size: 'l', variant });
+
+export const XL = (): TemplateResult =>
+    renderButtonSet({ size: 'xl', variant });

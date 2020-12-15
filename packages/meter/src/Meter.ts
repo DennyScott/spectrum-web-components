@@ -47,9 +47,6 @@ export class Meter extends SizedMixin(SpectrumElement) {
     public positive = false;
 
     @property({ type: String, reflect: true })
-    public size = 'm';
-
-    @property({ type: String, reflect: true })
     public label = '';
 
     @property({ type: Boolean, reflect: true, attribute: 'side-label' })
