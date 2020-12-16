@@ -22,7 +22,14 @@ Dropdown.openOverlay = async (
     target: HTMLElement,
     interaction: TriggerInteractions,
     content: HTMLElement,
+    menuContent: HTMLElement,
     options: OverlayOptions
 ): Promise<() => void> => {
-    return await Overlay.open(target, interaction, content, options);
+    return await Overlay.open(target, interaction, content, {
+        ...options,
+        openCloseDetail: {
+            interaction,
+            content: menuContent,
+        }
+    });
 };

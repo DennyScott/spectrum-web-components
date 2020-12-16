@@ -51,6 +51,9 @@ import {
 /**
  * @slot label - The placeholder content for the dropdown
  * @slot {"sp-menu"} - The menu of options that will display when the dropdown is open
+ *
+ * @fires sp-open - Announces that the overlay has been opened
+ * @fires sp-close - Announces that the overlay has been closed
  */
 export class DropdownBase extends Focusable {
     public static get styles(): CSSResultArray {
@@ -67,9 +70,16 @@ export class DropdownBase extends Focusable {
         target: HTMLElement,
         interaction: TriggerInteractions,
         content: HTMLElement,
+        menuContent: HTMLElement,
         options: OverlayOptions
     ): Promise<() => void> => {
-        return await openOverlay(target, interaction, content, options);
+        return await openOverlay(target, interaction, content, {
+            ...options,
+            openCloseDetail: {
+                interaction,
+                content: menuContent,
+            }
+        });
     };
 
     @query('#button')
@@ -283,6 +293,7 @@ export class DropdownBase extends Focusable {
             button,
             'inline',
             popover,
+            this.optionsMenu,
             {
                 placement: this.placement,
                 receivesFocus: 'auto',
